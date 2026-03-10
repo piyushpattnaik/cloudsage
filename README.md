@@ -265,17 +265,3 @@ pytest tests/ -v --cov=agents --cov=decision_engine --cov=analytics
 # 106 tests covering agents, policy engine, SLO tracker, economic model,
 # embeddings, causal engine, and end-to-end pipeline integration
 ```
-
----
-
-## Hackathon Pitch
-
-**Problem:** SRE teams spend 60%+ of their time on reactive incident response. P1 MTTR averages 45+ minutes. Alert fatigue causes mis-classification. Cost waste from idle resources goes undetected for weeks.
-
-**Solution — 4 Layers:**
-1. 🚨 **Intelligent Triage** — 5 specialised AI agents with RAG-augmented reasoning + 3-model GPT-4o consensus for every P1 decision
-2. ⚖️ **Safe Autonomous Action** — SLO-gated policy engine prevents automation from amplifying outages; high burn-rate incidents require human sign-off
-3. 📊 **Real-Time Intelligence** — Causal graphs, blast radius prediction, economic impact modelling, and error budget tracking — all live from Cosmos DB
-4. 🔄 **Closed-Loop Learning** — Every automated action is scored and fed back; the reliability index and runbook knowledge base improve with each incident
-
-**Azure:** AI Foundry · AI Search · Event Hubs · Service Bus · Cosmos DB · AKS · Functions · Defender for Cloud · Chaos Studio · Blob Storage · Monitor · Static Web Apps · Bicep IaC
