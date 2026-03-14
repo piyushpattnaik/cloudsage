@@ -403,3 +403,119 @@ Response headers:
 }
 "}
 {"time": "2026-03-05 19:52:59,797", "level": "INFO", "module": "CloudSage.Orchestrator", "message": "[14015a47-68e9-4f1d-ad99-4f665935aeb4] Pipeline complete: status=success severity=P1 savings=$15423.92"}
+{"time": "2026-03-15 03:48:25,176", "level": "INFO", "module": "CloudSage.Main", "message": "Starting CloudSage HTTP ingestion server (free-tier: replaces Event Hub)..."}
+{"time": "2026-03-15 03:48:25,263", "level": "INFO", "module": "CloudSage.Config", "message": "LLM provider: 'openai' | model=gpt-4o | endpoint=https://api.openai.com/v1 | rate_limit=60 RPM"}
+{"time": "2026-03-15 03:48:25,263", "level": "WARNING", "module": "CloudSage.Config", "message": "cosmos_db.endpoint is not set. Cosmos DB persistence will fail. Set it in config/config.json or via COSMOS_DB_ENDPOINT env var."}
+{"time": "2026-03-15 03:48:25,264", "level": "WARNING", "module": "CloudSage.Config", "message": "API key is not set. All LLM calls will fail. Set providers.openai.api_key / providers.gemini.api_key / providers.groq.api_key in config/config.json or via OPENAI_API_KEY / GEMINI_API_KEY / GROQ_API_KEY env var."}
+{"time": "2026-03-15 03:48:25,288", "level": "INFO", "module": "HttpIngestionServer", "message": "CloudSage HTTP ingestion server listening on 0.0.0.0:8080
+  POST /events   — submit a CloudSage event
+  GET  /health   — liveness check"}
+{"time": "2026-03-15 03:48:43,331", "level": "INFO", "module": "HttpIngestionServer", "message": ""POST /events HTTP/1.1" 202 -"}
+{"time": "2026-03-15 03:48:43,333", "level": "INFO", "module": "MessageRouter", "message": "Routing event: event_type=incident_alert service=payment-api"}
+{"time": "2026-03-15 03:48:46,626", "level": "INFO", "module": "faiss.loader", "message": "Loading faiss with AVX512 support."}
+{"time": "2026-03-15 03:48:46,627", "level": "INFO", "module": "faiss.loader", "message": "Could not load library with AVX512 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx512'")"}
+{"time": "2026-03-15 03:48:46,627", "level": "INFO", "module": "faiss.loader", "message": "Loading faiss with AVX2 support."}
+{"time": "2026-03-15 03:48:47,098", "level": "INFO", "module": "faiss.loader", "message": "Successfully loaded faiss with AVX2 support."}
+{"time": "2026-03-15 03:48:58,698", "level": "INFO", "module": "HttpIngestionServer", "message": ""POST /events HTTP/1.1" 202 -"}
+{"time": "2026-03-15 03:48:58,700", "level": "INFO", "module": "MessageRouter", "message": "Routing event: event_type=incident_alert service=payment-api"}
+{"time": "2026-03-15 03:49:02,066", "level": "INFO", "module": "CloudSage.BaseAgent", "message": "Global LLM rate limiter: 60 RPM (provider=unknown)"}
+{"time": "2026-03-15 03:49:02,067", "level": "INFO", "module": "CloudSage.BaseAgent", "message": "OpenAI client -> default endpoint: https://api.openai.com/v1"}
+{"time": "2026-03-15 03:49:02,068", "level": "INFO", "module": "CloudSage.BaseAgent", "message": "OpenAI client -> default endpoint: https://api.openai.com/v1"}
+{"time": "2026-03-15 03:49:02,603", "level": "INFO", "module": "CloudSage.BaseAgent", "message": "OpenAI client -> default endpoint: https://api.openai.com/v1"}
+{"time": "2026-03-15 03:49:02,605", "level": "INFO", "module": "CloudSage.BaseAgent", "message": "OpenAI client -> default endpoint: https://api.openai.com/v1"}
+{"time": "2026-03-15 03:49:03,156", "level": "WARNING", "module": "CloudSage.Embeddings", "message": "EmbeddingsClient: no API key set for embed_provider=openai. Embedding calls will fail. For Groq: set GROQ_EMBEDDING_KEY or GEMINI_API_KEY."}
+{"time": "2026-03-15 03:49:03,157", "level": "WARNING", "module": "CloudSage.Embeddings", "message": "EmbeddingsClient: no API key set for embed_provider=openai. Embedding calls will fail. For Groq: set GROQ_EMBEDDING_KEY or GEMINI_API_KEY."}
+{"time": "2026-03-15 03:49:03,157", "level": "INFO", "module": "CloudSage.FAISSSearch", "message": "FAISSSearch: provider=openai model=text-embedding-3-small embedding_dims=1536"}
+{"time": "2026-03-15 03:49:03,157", "level": "INFO", "module": "CloudSage.FAISSSearch", "message": "FAISSSearch: provider=openai model=text-embedding-3-small embedding_dims=1536"}
+{"time": "2026-03-15 03:49:03,158", "level": "INFO", "module": "CloudSage.FAISSSearch", "message": "Created new empty FAISS index (dims=1536)"}
+{"time": "2026-03-15 03:49:03,158", "level": "INFO", "module": "CloudSage.FAISSSearch", "message": "Created new empty FAISS index (dims=1536)"}
+{"time": "2026-03-15 03:49:03,158", "level": "INFO", "module": "CloudSage.FAISSSearch", "message": "FAISSSearch ready — 0 vectors | dims=1536 | blob_backed=False"}
+{"time": "2026-03-15 03:49:03,159", "level": "INFO", "module": "CloudSage.FAISSSearch", "message": "FAISSSearch ready — 0 vectors | dims=1536 | blob_backed=False"}
+{"time": "2026-03-15 03:49:03,159", "level": "INFO", "module": "CloudSage.BaseAgent", "message": "OpenAI client -> default endpoint: https://api.openai.com/v1"}
+{"time": "2026-03-15 03:49:03,160", "level": "INFO", "module": "CloudSage.BaseAgent", "message": "OpenAI client -> default endpoint: https://api.openai.com/v1"}
+{"time": "2026-03-15 03:49:03,671", "level": "INFO", "module": "CloudSage.BaseAgent", "message": "OpenAI client -> default endpoint: https://api.openai.com/v1"}
+{"time": "2026-03-15 03:49:03,681", "level": "INFO", "module": "CloudSage.BaseAgent", "message": "OpenAI client -> default endpoint: https://api.openai.com/v1"}
+{"time": "2026-03-15 03:49:04,156", "level": "INFO", "module": "CloudSage.BaseAgent", "message": "OpenAI client -> default endpoint: https://api.openai.com/v1"}
+{"time": "2026-03-15 03:49:04,166", "level": "INFO", "module": "CloudSage.BaseAgent", "message": "OpenAI client -> default endpoint: https://api.openai.com/v1"}
+{"time": "2026-03-15 03:49:04,613", "level": "INFO", "module": "CloudSage.BaseAgent", "message": "OpenAI client -> default endpoint: https://api.openai.com/v1"}
+{"time": "2026-03-15 03:49:04,625", "level": "INFO", "module": "CloudSage.BaseAgent", "message": "OpenAI client -> default endpoint: https://api.openai.com/v1"}
+{"time": "2026-03-15 03:49:05,059", "level": "WARNING", "module": "CloudSage.Embeddings", "message": "EmbeddingsClient: no API key set for embed_provider=openai. Embedding calls will fail. For Groq: set GROQ_EMBEDDING_KEY or GEMINI_API_KEY."}
+{"time": "2026-03-15 03:49:05,060", "level": "INFO", "module": "CloudSage.FAISSSearch", "message": "FAISSSearch: provider=openai model=text-embedding-3-small embedding_dims=1536"}
+{"time": "2026-03-15 03:49:05,061", "level": "INFO", "module": "CloudSage.FAISSSearch", "message": "Created new empty FAISS index (dims=1536)"}
+{"time": "2026-03-15 03:49:05,061", "level": "INFO", "module": "CloudSage.FAISSSearch", "message": "FAISSSearch ready — 0 vectors | dims=1536 | blob_backed=False"}
+{"time": "2026-03-15 03:49:05,067", "level": "INFO", "module": "azure.identity._credentials.environment", "message": "No environment configuration found."}
+{"time": "2026-03-15 03:49:05,070", "level": "WARNING", "module": "CloudSage.Embeddings", "message": "EmbeddingsClient: no API key set for embed_provider=openai. Embedding calls will fail. For Groq: set GROQ_EMBEDDING_KEY or GEMINI_API_KEY."}
+{"time": "2026-03-15 03:49:05,070", "level": "INFO", "module": "CloudSage.FAISSSearch", "message": "FAISSSearch: provider=openai model=text-embedding-3-small embedding_dims=1536"}
+{"time": "2026-03-15 03:49:05,071", "level": "INFO", "module": "CloudSage.FAISSSearch", "message": "Created new empty FAISS index (dims=1536)"}
+{"time": "2026-03-15 03:49:05,071", "level": "INFO", "module": "CloudSage.FAISSSearch", "message": "FAISSSearch ready — 0 vectors | dims=1536 | blob_backed=False"}
+{"time": "2026-03-15 03:49:05,072", "level": "INFO", "module": "azure.identity._credentials.environment", "message": "No environment configuration found."}
+{"time": "2026-03-15 03:49:05,103", "level": "INFO", "module": "azure.identity._credentials.managed_identity", "message": "ManagedIdentityCredential will use IMDS"}
+{"time": "2026-03-15 03:49:05,104", "level": "INFO", "module": "azure.identity._credentials.managed_identity", "message": "ManagedIdentityCredential will use IMDS"}
+{"time": "2026-03-15 03:49:05,105", "level": "ERROR", "module": "HttpIngestionServer", "message": "Background pipeline failed: Invalid URL scheme or hostname: SplitResult(scheme='', netloc='', path='', query='', fragment='')"}
+Traceback (most recent call last):
+  File "C:\Users\KURAMA\OneDrive\Documents\GitHub\cloudsage\streaming\eventhub_consumer.py", line 85, in _run
+    self.__class__.router.route_sync(event_type, payload)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KURAMA\OneDrive\Documents\GitHub\cloudsage\streaming\message_router.py", line 72, in route_sync
+    orchestrator = self._get_orchestrator()
+  File "C:\Users\KURAMA\OneDrive\Documents\GitHub\cloudsage\streaming\message_router.py", line 54, in _get_orchestrator
+    self._orchestrator = AgentOrchestrator(environment=env)
+                         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\KURAMA\OneDrive\Documents\GitHub\cloudsage\agents\orchestrator.py", line 132, in __init__
+    self.cosmos = CosmosDBClient()
+                  ~~~~~~~~~~~~~~^^
+  File "C:\Users\KURAMA\OneDrive\Documents\GitHub\cloudsage\database\cosmos_client.py", line 36, in __init__
+    self._client = _build_cosmos_client(config)
+                   ~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\KURAMA\OneDrive\Documents\GitHub\cloudsage\database\cosmos_client.py", line 24, in _build_cosmos_client
+    return CosmosClient(url=endpoint, credential=DefaultAzureCredential())
+  File "C:\Users\KURAMA\OneDrive\Documents\GitHub\cloudsage\.venv\Lib\site-packages\azure\cosmos\cosmos_client.py", line 237, in __init__
+    self.client_connection = CosmosClientConnection(
+                             ~~~~~~~~~~~~~~~~~~~~~~^
+        url_connection=url,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        **kwargs
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\KURAMA\OneDrive\Documents\GitHub\cloudsage\.venv\Lib\site-packages\azure\cosmos\_cosmos_client_connection.py", line 224, in __init__
+    account_scope = base.create_scope_from_url(self.url_connection)
+  File "C:\Users\KURAMA\OneDrive\Documents\GitHub\cloudsage\.venv\Lib\site-packages\azure\cosmos\_base.py", line 896, in create_scope_from_url
+    raise ValueError(f"Invalid URL scheme or hostname: {parsed_url!r}")
+ValueError: Invalid URL scheme or hostname: SplitResult(scheme='', netloc='', path='', query='', fragment='')
+{"time": "2026-03-15 03:49:05,106", "level": "ERROR", "module": "HttpIngestionServer", "message": "Background pipeline failed: Invalid URL scheme or hostname: SplitResult(scheme='', netloc='', path='', query='', fragment='')"}
+Traceback (most recent call last):
+  File "C:\Users\KURAMA\OneDrive\Documents\GitHub\cloudsage\streaming\eventhub_consumer.py", line 85, in _run
+    self.__class__.router.route_sync(event_type, payload)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\KURAMA\OneDrive\Documents\GitHub\cloudsage\streaming\message_router.py", line 72, in route_sync
+    orchestrator = self._get_orchestrator()
+  File "C:\Users\KURAMA\OneDrive\Documents\GitHub\cloudsage\streaming\message_router.py", line 54, in _get_orchestrator
+    self._orchestrator = AgentOrchestrator(environment=env)
+                         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\KURAMA\OneDrive\Documents\GitHub\cloudsage\agents\orchestrator.py", line 132, in __init__
+    self.cosmos = CosmosDBClient()
+                  ~~~~~~~~~~~~~~^^
+  File "C:\Users\KURAMA\OneDrive\Documents\GitHub\cloudsage\database\cosmos_client.py", line 36, in __init__
+    self._client = _build_cosmos_client(config)
+                   ~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\KURAMA\OneDrive\Documents\GitHub\cloudsage\database\cosmos_client.py", line 24, in _build_cosmos_client
+    return CosmosClient(url=endpoint, credential=DefaultAzureCredential())
+  File "C:\Users\KURAMA\OneDrive\Documents\GitHub\cloudsage\.venv\Lib\site-packages\azure\cosmos\cosmos_client.py", line 237, in __init__
+    self.client_connection = CosmosClientConnection(
+                             ~~~~~~~~~~~~~~~~~~~~~~^
+        url_connection=url,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        **kwargs
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\KURAMA\OneDrive\Documents\GitHub\cloudsage\.venv\Lib\site-packages\azure\cosmos\_cosmos_client_connection.py", line 224, in __init__
+    account_scope = base.create_scope_from_url(self.url_connection)
+  File "C:\Users\KURAMA\OneDrive\Documents\GitHub\cloudsage\.venv\Lib\site-packages\azure\cosmos\_base.py", line 896, in create_scope_from_url
+    raise ValueError(f"Invalid URL scheme or hostname: {parsed_url!r}")
+ValueError: Invalid URL scheme or hostname: SplitResult(scheme='', netloc='', path='', query='', fragment='')
+{"time": "2026-03-15 03:49:24,963", "level": "INFO", "module": "HttpIngestionServer", "message": "Server stopped."}
