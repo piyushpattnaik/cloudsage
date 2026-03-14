@@ -1,0 +1,42 @@
+# CloudSage — Python Dependencies
+# Free-tier profile: only Azure Cosmos DB is available.
+# Event Hub, Service Bus, AKS, Blob Storage, and Chaos Studio are commented out.
+# Uncomment the relevant packages when upgrading to a paid Azure subscription.
+
+# ── Azure (free tier: Cosmos DB + identity only) ─────────────────────────
+azure-cosmos>=4.5.1
+azure-identity>=1.15.0         # used for Cosmos managed-identity auth in production
+# azure-eventhub>=5.11.0       # paid — Event Hub (replaced by HTTP ingestion)
+# azure-eventhub-checkpointstoreblob-aio>=1.1.4  # paid — Event Hub checkpoint store
+# azure-servicebus>=7.11.0     # paid — Service Bus (replaced by HTTP trigger)
+# azure-storage-blob>=12.19.0  # paid — FAISS index blob backing (local-only on free tier)
+# azure-mgmt-containerservice>=28.0.0  # paid — AKS management (automation stubs)
+
+# ── OpenAI (direct API — no Azure wrapper needed) ────────────────────────
+openai>=1.30.0
+
+# ── Vector search (local FAISS — no Azure AI Search needed) ──────────────
+faiss-cpu>=1.7.4
+
+# ── Kubernetes (paid tier only — AKS) ────────────────────────────────────
+# kubernetes>=28.1.0            # paid — AKS automation (automation files are stubs)
+
+# ── ML / Analytics ───────────────────────────────────────────────────────
+scikit-learn>=1.3.0
+numpy>=1.24.0
+pandas>=2.0.0
+
+# ── Utilities ────────────────────────────────────────────────────────────
+python-dotenv>=1.0.0
+pydantic>=2.0.0
+httpx>=0.25.0
+tenacity>=8.2.0
+requests>=2.31.0
+
+# ── Testing ──────────────────────────────────────────────────────────────
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+pytest-cov>=4.1.0
+
+# ── Logging ──────────────────────────────────────────────────────────────
+structlog>=23.1.0

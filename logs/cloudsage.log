@@ -1,0 +1,405 @@
+{"time": "2026-03-05 10:35:33,082", "level": "INFO", "module": "CloudSage.Main", "message": "Starting CloudSage HTTP ingestion server (free-tier: replaces Event Hub)..."}
+{"time": "2026-03-05 10:35:33,252", "level": "INFO", "module": "CloudSage.Config", "message": "Groq embedding fallback: provider=gemini model=text-embedding-004 endpoint=https://generativelanguage.googleapis.com/v1beta/openai/"}
+{"time": "2026-03-05 10:35:33,253", "level": "INFO", "module": "CloudSage.Config", "message": "LLM provider: 'groq' | model=llama-3.3-70b-versatile | endpoint=https://api.groq.com/openai/v1 | rate_limit=25 RPM"}
+{"time": "2026-03-05 10:35:33,288", "level": "INFO", "module": "HttpIngestionServer", "message": "CloudSage HTTP ingestion server listening on 0.0.0.0:8080
+  POST /events   — submit a CloudSage event
+  GET  /health   — liveness check"}
+{"time": "2026-03-05 19:47:31,773", "level": "INFO", "module": "CloudSage.Main", "message": "Starting CloudSage HTTP ingestion server (free-tier: replaces Event Hub)..."}
+{"time": "2026-03-05 19:47:31,884", "level": "INFO", "module": "CloudSage.Config", "message": "Groq embedding fallback: provider=gemini model=text-embedding-004 endpoint=https://generativelanguage.googleapis.com/v1beta/openai/"}
+{"time": "2026-03-05 19:47:31,884", "level": "INFO", "module": "CloudSage.Config", "message": "LLM provider: 'groq' | model=llama-3.3-70b-versatile | endpoint=https://api.groq.com/openai/v1 | rate_limit=25 RPM"}
+{"time": "2026-03-05 19:47:31,908", "level": "INFO", "module": "HttpIngestionServer", "message": "CloudSage HTTP ingestion server listening on 0.0.0.0:8080
+  POST /events   — submit a CloudSage event
+  GET  /health   — liveness check"}
+{"time": "2026-03-05 19:51:35,602", "level": "INFO", "module": "HttpIngestionServer", "message": ""POST /events HTTP/1.1" 202 -"}
+{"time": "2026-03-05 19:51:35,612", "level": "INFO", "module": "MessageRouter", "message": "Routing event: event_type=incident_alert service=checkout-service"}
+{"time": "2026-03-05 19:51:51,899", "level": "INFO", "module": "faiss.loader", "message": "Loading faiss with AVX512 support."}
+{"time": "2026-03-05 19:51:51,903", "level": "INFO", "module": "faiss.loader", "message": "Could not load library with AVX512 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx512'")"}
+{"time": "2026-03-05 19:51:51,904", "level": "INFO", "module": "faiss.loader", "message": "Loading faiss with AVX2 support."}
+{"time": "2026-03-05 19:51:53,228", "level": "INFO", "module": "faiss.loader", "message": "Successfully loaded faiss with AVX2 support."}
+{"time": "2026-03-05 19:52:34,532", "level": "INFO", "module": "CloudSage.BaseAgent", "message": "Global LLM rate limiter: 25 RPM (provider=unknown)"}
+{"time": "2026-03-05 19:52:34,534", "level": "INFO", "module": "CloudSage.BaseAgent", "message": "OpenAI client -> custom endpoint: https://api.groq.com/openai/v1"}
+{"time": "2026-03-05 19:52:36,719", "level": "INFO", "module": "CloudSage.BaseAgent", "message": "OpenAI client -> custom endpoint: https://api.groq.com/openai/v1"}
+{"time": "2026-03-05 19:52:38,349", "level": "INFO", "module": "CloudSage.Embeddings", "message": "EmbeddingsClient — chat=groq embed=gemini model=text-embedding-004 native_rest=True"}
+{"time": "2026-03-05 19:52:38,351", "level": "INFO", "module": "CloudSage.FAISSSearch", "message": "FAISSSearch: provider=groq model=text-embedding-004 embedding_dims=768"}
+{"time": "2026-03-05 19:52:38,358", "level": "INFO", "module": "CloudSage.FAISSSearch", "message": "Created new empty FAISS index (dims=768)"}
+{"time": "2026-03-05 19:52:38,360", "level": "INFO", "module": "CloudSage.FAISSSearch", "message": "FAISSSearch ready — 0 vectors | dims=768 | blob_backed=False"}
+{"time": "2026-03-05 19:52:38,364", "level": "INFO", "module": "CloudSage.BaseAgent", "message": "OpenAI client -> custom endpoint: https://api.groq.com/openai/v1"}
+{"time": "2026-03-05 19:52:40,086", "level": "INFO", "module": "CloudSage.BaseAgent", "message": "OpenAI client -> custom endpoint: https://api.groq.com/openai/v1"}
+{"time": "2026-03-05 19:52:41,854", "level": "INFO", "module": "CloudSage.BaseAgent", "message": "OpenAI client -> custom endpoint: https://api.groq.com/openai/v1"}
+{"time": "2026-03-05 19:52:43,355", "level": "INFO", "module": "CloudSage.BaseAgent", "message": "OpenAI client -> custom endpoint: https://api.groq.com/openai/v1"}
+{"time": "2026-03-05 19:52:45,082", "level": "INFO", "module": "CloudSage.Embeddings", "message": "EmbeddingsClient — chat=groq embed=gemini model=text-embedding-004 native_rest=True"}
+{"time": "2026-03-05 19:52:45,083", "level": "INFO", "module": "CloudSage.FAISSSearch", "message": "FAISSSearch: provider=groq model=text-embedding-004 embedding_dims=768"}
+{"time": "2026-03-05 19:52:45,086", "level": "INFO", "module": "CloudSage.FAISSSearch", "message": "Created new empty FAISS index (dims=768)"}
+{"time": "2026-03-05 19:52:45,087", "level": "INFO", "module": "CloudSage.FAISSSearch", "message": "FAISSSearch ready — 0 vectors | dims=768 | blob_backed=False"}
+{"time": "2026-03-05 19:52:45,430", "level": "INFO", "module": "azure.cosmos._cosmos_http_logging_policy", "message": "Request URL: 'https://cloudsage-cosmos.documents.azure.com:443/'
+Request method: 'GET'
+Request headers:
+    'Cache-Control': 'no-cache'
+    'x-ms-version': '2020-07-15'
+    'x-ms-documentdb-query-iscontinuationexpected': 'False'
+    'x-ms-cosmos-sdk-supportedcapabilities': '1'
+    'x-ms-activity-id': '07712fa3-e470-4da0-9a41-9d2c0c4949a7'
+    'x-ms-date': 'Thu, 05 Mar 2026 14:22:45 GMT'
+    'authorization': 'REDACTED'
+    'Accept': 'application/json'
+    'x-ms-client-id': '13c9d9d2-24a0-4ea0-afd9-e0aaa7190c0c'
+    'x-ms-thinclient-proxy-resource-type': 'databaseaccount'
+    'x-ms-thinclient-proxy-operation-type': 'Read'
+    'Content-Length': '0'
+    'User-Agent': 'azsdk-python-cosmos/4.15.0 Python/3.13.5 (Windows-11-10.0.26200-SP0)'
+No body was attached to the request"}
+{"time": "2026-03-05 19:52:48,007", "level": "INFO", "module": "azure.cosmos._cosmos_http_logging_policy", "message": "Response status: 200
+Response headers:
+    'Content-Length': '1788'
+    'Date': 'Thu, 05 Mar 2026 14:22:46 GMT'
+    'Content-Type': 'application/json'
+    'Server': 'Microsoft-HTTPAPI/2.0'
+    'x-ms-gatewayversion': 'version=2.14.0'
+    'Cache-Control': 'no-store, no-cache'
+    'Pragma': 'no-cache'
+    'x-ms-max-media-storage-usage-mb': '0'
+    'x-ms-media-storage-usage-mb': '0'
+    'x-ms-databaseaccount-consumed-mb': 'REDACTED'
+    'x-ms-databaseaccount-reserved-mb': 'REDACTED'
+    'x-ms-databaseaccount-provisioned-mb': 'REDACTED'
+    'Strict-Transport-Security': 'max-age=31536000'
+    'Content-Location': 'https://cloudsage-cosmos.documents.azure.com/'"}
+{"time": "2026-03-05 19:52:48,011", "level": "INFO", "module": "MessageRouter", "message": "Orchestrator initialised (environment=production)"}
+{"time": "2026-03-05 19:52:48,012", "level": "INFO", "module": "azure.cosmos._cosmos_http_logging_policy", "message": "Request URL: 'https://cloudsage-cosmos-westus2.documents.azure.com:443/'
+Request method: 'GET'
+Request headers:
+    'Cache-Control': 'no-cache'
+    'x-ms-version': '2020-07-15'
+    'x-ms-documentdb-query-iscontinuationexpected': 'False'
+    'x-ms-consistency-level': 'Session'
+    'x-ms-cosmos-sdk-supportedcapabilities': '1'
+    'x-ms-activity-id': '86033624-d153-4ed6-bff8-ca49da47dd4d'
+    'x-ms-date': 'Thu, 05 Mar 2026 14:22:48 GMT'
+    'authorization': 'REDACTED'
+    'Accept': 'application/json'
+    'x-ms-client-id': '13c9d9d2-24a0-4ea0-afd9-e0aaa7190c0c'
+    'x-ms-thinclient-proxy-resource-type': 'databaseaccount'
+    'x-ms-thinclient-proxy-operation-type': 'Read'
+    'Content-Length': '0'
+    'User-Agent': 'azsdk-python-cosmos/4.15.0 Python/3.13.5 (Windows-11-10.0.26200-SP0)'
+No body was attached to the request"}
+{"time": "2026-03-05 19:52:48,013", "level": "INFO", "module": "CloudSage.Orchestrator", "message": "Orchestrator: event=incident_alert id=14015a47-68e9-4f1d-ad99-4f665935aeb4"}
+{"time": "2026-03-05 19:52:48,014", "level": "INFO", "module": "CloudSage.Orchestrator", "message": "[14015a47-68e9-4f1d-ad99-4f665935aeb4] Step 0: Adaptive threshold evaluation"}
+{"time": "2026-03-05 19:52:48,015", "level": "INFO", "module": "CloudSage.Orchestrator", "message": "[14015a47-68e9-4f1d-ad99-4f665935aeb4] Step 1: IncidentAgent"}
+{"time": "2026-03-05 19:52:48,016", "level": "INFO", "agent": "IncidentResponseAgent", "message": "Agent IncidentResponseAgent executing | payload_keys=['event_type', 'service', 'alert_description', 'metrics', 'namespace', 'timestamp', 'incident_id']"}
+{"time": "2026-03-05 19:52:48,016", "level": "INFO", "module": "IncidentResponseAgent", "message": "Agent IncidentResponseAgent executing | payload_keys=['event_type', 'service', 'alert_description', 'metrics', 'namespace', 'timestamp', 'incident_id']"}
+{"time": "2026-03-05 19:52:48,022", "level": "INFO", "agent": "IncidentResponseAgent", "message": "Calling LLM model=llama-3.3-70b-versatile agent=IncidentResponseAgent"}
+{"time": "2026-03-05 19:52:48,022", "level": "INFO", "module": "IncidentResponseAgent", "message": "Calling LLM model=llama-3.3-70b-versatile agent=IncidentResponseAgent"}
+{"time": "2026-03-05 19:52:50,777", "level": "INFO", "module": "azure.cosmos._cosmos_http_logging_policy", "message": "Response status: 200
+Response headers:
+    'Content-Length': '1796'
+    'Date': 'Thu, 05 Mar 2026 14:22:49 GMT'
+    'Content-Type': 'application/json'
+    'Server': 'Microsoft-HTTPAPI/2.0'
+    'x-ms-gatewayversion': 'version=2.14.0'
+    'Cache-Control': 'no-store, no-cache'
+    'Pragma': 'no-cache'
+    'x-ms-max-media-storage-usage-mb': '0'
+    'x-ms-media-storage-usage-mb': '0'
+    'x-ms-databaseaccount-consumed-mb': 'REDACTED'
+    'x-ms-databaseaccount-reserved-mb': 'REDACTED'
+    'x-ms-databaseaccount-provisioned-mb': 'REDACTED'
+    'Strict-Transport-Security': 'max-age=31536000'
+    'Content-Location': 'https://cloudsage-cosmos-westus2.documents.azure.com/'"}
+{"time": "2026-03-05 19:52:50,868", "level": "INFO", "module": "httpx", "message": "HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK""}
+{"time": "2026-03-05 19:52:50,899", "level": "INFO", "agent": "IncidentResponseAgent", "message": "Agent IncidentResponseAgent completed | duration=2882.13ms"}
+{"time": "2026-03-05 19:52:50,899", "level": "INFO", "module": "IncidentResponseAgent", "message": "Agent IncidentResponseAgent completed | duration=2882.13ms"}
+{"time": "2026-03-05 19:52:50,900", "level": "INFO", "module": "CloudSage.Orchestrator", "message": "[14015a47-68e9-4f1d-ad99-4f665935aeb4] P1 detected — running multi-model consensus"}
+{"time": "2026-03-05 19:52:50,903", "level": "INFO", "module": "CloudSage.Consensus", "message": "Consensus call: model=llama-3.3-70b-versatile"}
+{"time": "2026-03-05 19:52:50,905", "level": "INFO", "agent": "IncidentResponseAgent", "message": "Consensus call: model=llama-3.3-70b-versatile"}
+{"time": "2026-03-05 19:52:50,905", "level": "INFO", "module": "IncidentResponseAgent", "message": "Consensus call: model=llama-3.3-70b-versatile"}
+{"time": "2026-03-05 19:52:51,200", "level": "INFO", "module": "httpx", "message": "HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK""}
+{"time": "2026-03-05 19:52:52,905", "level": "INFO", "module": "CloudSage.Consensus", "message": "Consensus call: model=openai/gpt-oss-20b"}
+{"time": "2026-03-05 19:52:52,906", "level": "INFO", "agent": "IncidentResponseAgent", "message": "Consensus call: model=openai/gpt-oss-20b"}
+{"time": "2026-03-05 19:52:52,906", "level": "INFO", "module": "IncidentResponseAgent", "message": "Consensus call: model=openai/gpt-oss-20b"}
+{"time": "2026-03-05 19:52:53,379", "level": "INFO", "module": "httpx", "message": "HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK""}
+{"time": "2026-03-05 19:52:54,906", "level": "INFO", "module": "CloudSage.Consensus", "message": "Consensus call: model=llama-3.1-8b-instant"}
+{"time": "2026-03-05 19:52:54,907", "level": "INFO", "agent": "IncidentResponseAgent", "message": "Consensus call: model=llama-3.1-8b-instant"}
+{"time": "2026-03-05 19:52:54,907", "level": "INFO", "module": "IncidentResponseAgent", "message": "Consensus call: model=llama-3.1-8b-instant"}
+{"time": "2026-03-05 19:52:55,130", "level": "INFO", "module": "httpx", "message": "HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK""}
+{"time": "2026-03-05 19:52:55,139", "level": "INFO", "module": "CloudSage.Consensus", "message": "Consensus result: MEDIUM | votes=2/3 | severity=P2 action=restart_service"}
+{"time": "2026-03-05 19:52:55,140", "level": "WARNING", "module": "CloudSage.Orchestrator", "message": "[14015a47-68e9-4f1d-ad99-4f665935aeb4] No consensus — overriding to alert_only"}
+{"time": "2026-03-05 19:52:55,141", "level": "INFO", "module": "CloudSage.Orchestrator", "message": "[14015a47-68e9-4f1d-ad99-4f665935aeb4] Step 2: Causal Inference Engine"}
+{"time": "2026-03-05 19:52:55,142", "level": "INFO", "module": "CloudSage.CausalEngine", "message": "Running causal analysis for incident on 'checkout-service'"}
+{"time": "2026-03-05 19:52:55,143", "level": "INFO", "module": "CloudSage.Orchestrator", "message": "[14015a47-68e9-4f1d-ad99-4f665935aeb4] Step 3: Blast Radius Prediction for 'alert_only'"}
+{"time": "2026-03-05 19:52:55,144", "level": "INFO", "module": "CloudSage.BlastRadius", "message": "Predicting blast radius: action=alert_only target=checkout-service"}
+{"time": "2026-03-05 19:52:55,144", "level": "INFO", "module": "CloudSage.BlastRadius", "message": "Blast radius: risk=LOW services_affected=0 max_duration=0s safe=True"}
+{"time": "2026-03-05 19:52:55,145", "level": "INFO", "module": "CloudSage.Orchestrator", "message": "[14015a47-68e9-4f1d-ad99-4f665935aeb4] Step 4: SLO Error Budget Check"}
+{"time": "2026-03-05 19:52:55,149", "level": "INFO", "module": "azure.cosmos._cosmos_http_logging_policy", "message": "Request URL: 'https://cloudsage-cosmos-westus2.documents.azure.com:443/dbs/cloudsage/colls/incidents/'
+Request method: 'GET'
+Request headers:
+    'Cache-Control': 'no-cache'
+    'x-ms-version': '2020-07-15'
+    'x-ms-documentdb-query-iscontinuationexpected': 'False'
+    'x-ms-consistency-level': 'Session'
+    'x-ms-cosmos-sdk-supportedcapabilities': '1'
+    'x-ms-activity-id': '24ad3d33-143a-4e0a-a256-13afa794fe3b'
+    'x-ms-date': 'Thu, 05 Mar 2026 14:22:55 GMT'
+    'authorization': 'REDACTED'
+    'Accept': 'application/json'
+    'x-ms-client-id': '13c9d9d2-24a0-4ea0-afd9-e0aaa7190c0c'
+    'x-ms-thinclient-proxy-resource-type': 'colls'
+    'x-ms-thinclient-proxy-operation-type': 'Read'
+    'Content-Length': '0'
+    'User-Agent': 'azsdk-python-cosmos/4.15.0 Python/3.13.5 (Windows-11-10.0.26200-SP0)'
+No body was attached to the request"}
+{"time": "2026-03-05 19:52:55,392", "level": "INFO", "module": "azure.cosmos._cosmos_http_logging_policy", "message": "Response status: 200
+Response headers:
+    'Content-Length': '682'
+    'Date': 'Thu, 05 Mar 2026 14:22:54 GMT'
+    'Content-Type': 'application/json'
+    'Server': 'Microsoft-HTTPAPI/2.0'
+    'x-ms-gatewayversion': 'version=2.14.0'
+    'Cache-Control': 'no-store, no-cache'
+    'Pragma': 'no-cache'
+    'Strict-Transport-Security': 'max-age=31536000'
+    'x-ms-activity-id': '24ad3d33-143a-4e0a-a256-13afa794fe3b'
+    'x-ms-last-state-change-utc': 'Fri, 27 Feb 2026 12:28:06.922 GMT'
+    'etag': '"00003900-0000-0800-0000-69a2f7ce0000"'
+    'x-ms-schemaversion': '1.21'
+    'collection-partition-index': 'REDACTED'
+    'collection-service-index': 'REDACTED'
+    'lsn': '32'
+    'x-ms-request-charge': '2'
+    'x-ms-alt-content-path': 'dbs/cloudsage'
+    'x-ms-content-path': 'nPUeAA=='
+    'x-ms-documentdb-partitionkeyrangeid': '0'
+    'x-ms-xp-role': '1'
+    'x-ms-global-Committed-lsn': '32'
+    'x-ms-number-of-read-regions': '0'
+    'x-ms-item-lsn': '1'
+    'x-ms-transport-request-id': '1'
+    'x-ms-cosmos-llsn': '32'
+    'x-ms-cosmos-item-llsn': '1'
+    'x-ms-session-token': '0:-1#32'
+    'x-ms-request-duration-ms': '0.388'
+    'x-ms-serviceversion': 'version=2.14.0.0'
+    'x-ms-cosmos-physical-partition-id': '0'
+    'x-ms-cosmos-max-content-length': 'REDACTED'
+    'x-ms-cosmos-internal-partition-id': 'REDACTED'
+    'Content-Location': 'https://cloudsage-cosmos-westus2.documents.azure.com/dbs/cloudsage/colls/incidents/'"}
+{"time": "2026-03-05 19:52:55,397", "level": "INFO", "module": "azure.cosmos._cosmos_http_logging_policy", "message": "Request URL: 'https://cloudsage-cosmos-westus2.documents.azure.com:443/dbs/cloudsage/colls/incidents/docs/'
+Request method: 'POST'
+Request headers:
+    'Cache-Control': 'no-cache'
+    'x-ms-version': '2020-07-15'
+    'x-ms-documentdb-query-iscontinuationexpected': 'False'
+    'x-ms-consistency-level': 'Session'
+    'Content-Type': 'application/query+json'
+    'x-ms-cosmos-sdk-supportedcapabilities': '1'
+    'x-ms-activity-id': 'c8f98c80-bb61-4adc-bf86-8a84ea7d3327'
+    'x-ms-date': 'Thu, 05 Mar 2026 14:22:55 GMT'
+    'authorization': 'REDACTED'
+    'Accept': 'application/json'
+    'x-ms-client-id': '13c9d9d2-24a0-4ea0-afd9-e0aaa7190c0c'
+    'x-ms-cosmos-correlated-activityid': 'e42cd3f7-4a62-43aa-b4db-0359182d638e'
+    'x-ms-cosmos-intended-collection-rid': 'nPUeAKOFAME='
+    'x-ms-thinclient-proxy-resource-type': 'docs'
+    'x-ms-thinclient-proxy-operation-type': 'SqlQuery'
+    'x-ms-documentdb-isquery': 'true'
+    'Content-Length': '259'
+    'User-Agent': 'azsdk-python-cosmos/4.15.0 Python/3.13.5 (Windows-11-10.0.26200-SP0)'
+A body is sent with the request"}
+{"time": "2026-03-05 19:52:55,666", "level": "INFO", "module": "azure.cosmos._cosmos_http_logging_policy", "message": "Response status: 200
+Response headers:
+    'Content-Length': '2396'
+    'Date': 'Thu, 05 Mar 2026 14:22:54 GMT'
+    'Content-Type': 'application/json'
+    'Server': 'Compute'
+    'x-ms-gatewayversion': '2.0.0'
+    'x-ms-activity-id': 'c8f98c80-bb61-4adc-bf86-8a84ea7d3327'
+    'x-ms-last-state-change-utc': 'Fri, 27 Feb 2026 12:28:07.680 GMT'
+    'x-ms-resource-quota': 'documentSize=51200;documentsSize=52428800;documentsCount=-1;collectionSize=52428800;'
+    'x-ms-resource-usage': 'documentSize=0;documentsSize=274;documentsCount=27;collectionSize=281;'
+    'x-ms-schemaversion': '1.21'
+    'lsn': '32'
+    'x-ms-item-count': '8'
+    'x-ms-request-charge': '3.2'
+    'x-ms-alt-content-path': 'dbs/cloudsage/colls/incidents'
+    'x-ms-content-path': 'nPUeAKOFAME='
+    'x-ms-quorum-acked-lsn': '32'
+    'x-ms-current-write-quorum': '3'
+    'x-ms-current-replica-set-size': '4'
+    'x-ms-documentdb-partitionkeyrangeid': '0'
+    'x-ms-xp-role': '1'
+    'x-ms-cosmos-query-execution-info': '{"reverseRidEnabled":false,"reverseIndexScan":true}'
+    'x-ms-global-Committed-lsn': '32'
+    'x-ms-number-of-read-regions': '0'
+    'x-ms-transport-request-id': '1'
+    'x-ms-cosmos-llsn': '32'
+    'x-ms-cosmos-quorum-acked-llsn': '32'
+    'x-ms-session-token': '0:-1#32'
+    'x-ms-request-duration-ms': '0.69'
+    'x-ms-serviceversion': 'version=2.14.0.0'
+    'x-ms-cosmos-is-partition-key-delete-pending': 'false'
+    'x-ms-cosmos-physical-partition-id': '0'
+    'x-ms-cosmos-internal-partition-id': 'REDACTED'"}
+{"time": "2026-03-05 19:52:55,669", "level": "INFO", "module": "CloudSage.SLOTracker", "message": "SLO status: service=checkout-service remaining=85.2% burn_rate=8.0x tier=conservative"}
+{"time": "2026-03-05 19:52:55,670", "level": "INFO", "module": "CloudSage.Orchestrator", "message": "[14015a47-68e9-4f1d-ad99-4f665935aeb4] Step 5: RCA + Predictive agents (parallel)"}
+{"time": "2026-03-05 19:52:55,672", "level": "INFO", "agent": "RCAAgent", "message": "Agent RCAAgent executing | payload_keys=['event_type', 'service', 'alert_description', 'metrics', 'namespace', 'timestamp', 'incident_id', 'description', 'causal_context']"}
+{"time": "2026-03-05 19:52:55,672", "level": "INFO", "module": "RCAAgent", "message": "Agent RCAAgent executing | payload_keys=['event_type', 'service', 'alert_description', 'metrics', 'namespace', 'timestamp', 'incident_id', 'description', 'causal_context']"}
+{"time": "2026-03-05 19:52:55,674", "level": "INFO", "agent": "RCAAgent", "message": "Running RAG retrieval for: incident checkout-service: Checkout service experiencing high memory usage and possible leak, causing performance degradation and elevated error rates."}
+{"time": "2026-03-05 19:52:55,674", "level": "INFO", "module": "RCAAgent", "message": "Running RAG retrieval for: incident checkout-service: Checkout service experiencing high memory usage and possible leak, causing performance degradation and elevated error rates."}
+{"time": "2026-03-05 19:52:56,082", "level": "WARNING", "module": "CloudSage.RAGPipeline", "message": "Embedding failed — RAG context unavailable for this query. RCA will proceed without knowledge base retrieval. Error: Gemini embed HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "models/text-embedding-004 is not found for API version v1beta, or is not supported for embedContent. Call ListModels to see the list of available models and their supported methods.",
+    "status": "NOT_FOUND"
+  }
+}
+"}
+{"time": "2026-03-05 19:52:56,083", "level": "WARNING", "agent": "RCAAgent", "message": "RAG retrieval returned no context (embedding quota or config issue). RCA proceeding with LLM reasoning + causal engine data only."}
+{"time": "2026-03-05 19:52:56,083", "level": "WARNING", "module": "RCAAgent", "message": "RAG retrieval returned no context (embedding quota or config issue). RCA proceeding with LLM reasoning + causal engine data only."}
+{"time": "2026-03-05 19:52:56,085", "level": "INFO", "agent": "RCAAgent", "message": "Calling LLM model=llama-3.3-70b-versatile agent=RCAAgent"}
+{"time": "2026-03-05 19:52:56,085", "level": "INFO", "module": "RCAAgent", "message": "Calling LLM model=llama-3.3-70b-versatile agent=RCAAgent"}
+{"time": "2026-03-05 19:52:56,675", "level": "INFO", "agent": "PredictiveFailureAgent", "message": "Agent PredictiveFailureAgent executing | payload_keys=['event_type', 'service', 'alert_description', 'metrics', 'namespace', 'timestamp', 'incident_id', 'current_metrics', 'time_series']"}
+{"time": "2026-03-05 19:52:56,675", "level": "INFO", "module": "PredictiveFailureAgent", "message": "Agent PredictiveFailureAgent executing | payload_keys=['event_type', 'service', 'alert_description', 'metrics', 'namespace', 'timestamp', 'incident_id', 'current_metrics', 'time_series']"}
+{"time": "2026-03-05 19:52:56,677", "level": "INFO", "agent": "PredictiveFailureAgent", "message": "Calling LLM model=llama-3.3-70b-versatile agent=PredictiveFailureAgent"}
+{"time": "2026-03-05 19:52:56,677", "level": "INFO", "module": "PredictiveFailureAgent", "message": "Calling LLM model=llama-3.3-70b-versatile agent=PredictiveFailureAgent"}
+{"time": "2026-03-05 19:52:56,884", "level": "INFO", "module": "httpx", "message": "HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK""}
+{"time": "2026-03-05 19:52:56,888", "level": "INFO", "agent": "RCAAgent", "message": "Agent RCAAgent completed | duration=1215.87ms"}
+{"time": "2026-03-05 19:52:56,888", "level": "INFO", "module": "RCAAgent", "message": "Agent RCAAgent completed | duration=1215.87ms"}
+{"time": "2026-03-05 19:52:57,410", "level": "INFO", "module": "httpx", "message": "HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK""}
+{"time": "2026-03-05 19:52:57,414", "level": "INFO", "agent": "PredictiveFailureAgent", "message": "Agent PredictiveFailureAgent completed | duration=739.54ms"}
+{"time": "2026-03-05 19:52:57,414", "level": "INFO", "module": "PredictiveFailureAgent", "message": "Agent PredictiveFailureAgent completed | duration=739.54ms"}
+{"time": "2026-03-05 19:52:57,417", "level": "INFO", "module": "CloudSage.Orchestrator", "message": "[14015a47-68e9-4f1d-ad99-4f665935aeb4] Step 6: PolicyEngine (blast-radius + SLO aware)"}
+{"time": "2026-03-05 19:52:57,418", "level": "INFO", "module": "PolicyEngine", "message": "Policy APPROVED: action=alert_only service=checkout-service severity=P1"}
+{"time": "2026-03-05 19:52:57,419", "level": "INFO", "module": "CloudSage.Orchestrator", "message": "[14015a47-68e9-4f1d-ad99-4f665935aeb4] Step 7: Action dispatch"}
+{"time": "2026-03-05 19:52:57,421", "level": "INFO", "module": "ActionMapper", "message": "Dispatching action: alert_only | service=checkout-service"}
+{"time": "2026-03-05 19:52:57,422", "level": "INFO", "module": "ActionMapper", "message": "Alert-only action for service=checkout-service severity=P1"}
+{"time": "2026-03-05 19:52:57,424", "level": "WARNING", "module": "NotifyTeams", "message": "TEAMS_WEBHOOK_URL not configured — skipping Teams notification."}
+{"time": "2026-03-05 19:52:57,425", "level": "INFO", "module": "CloudSage.Orchestrator", "message": "[14015a47-68e9-4f1d-ad99-4f665935aeb4] Step 9: Economic Impact Model"}
+{"time": "2026-03-05 19:52:57,426", "level": "INFO", "module": "CloudSage.EconomicImpact", "message": "Economic impact: service=checkout-service severity=P1 cost_per_min=$361.60 running_total=$499.12 savings=$15423.92"}
+{"time": "2026-03-05 19:52:57,427", "level": "INFO", "module": "CloudSage.Orchestrator", "message": "[14015a47-68e9-4f1d-ad99-4f665935aeb4] Step 8: Persisting to Cosmos DB"}
+{"time": "2026-03-05 19:52:57,430", "level": "INFO", "module": "azure.cosmos._cosmos_http_logging_policy", "message": "Request URL: 'https://cloudsage-cosmos-westus2.documents.azure.com:443/dbs/cloudsage/colls/incidents/docs/'
+Request method: 'POST'
+Request headers:
+    'Cache-Control': 'no-cache'
+    'x-ms-version': '2020-07-15'
+    'x-ms-documentdb-query-iscontinuationexpected': 'False'
+    'x-ms-consistency-level': 'Session'
+    'x-ms-cosmos-sdk-supportedcapabilities': '1'
+    'x-ms-activity-id': '46a30668-204b-4f2d-9157-389ec7a84cf5'
+    'x-ms-documentdb-partitionkey': '["checkout-service"]'
+    'x-ms-date': 'Thu, 05 Mar 2026 14:22:57 GMT'
+    'authorization': 'REDACTED'
+    'Content-Type': 'application/json'
+    'Accept': 'application/json'
+    'x-ms-client-id': '13c9d9d2-24a0-4ea0-afd9-e0aaa7190c0c'
+    'x-ms-cosmos-intended-collection-rid': 'nPUeAKOFAME='
+    'x-ms-thinclient-proxy-resource-type': 'docs'
+    'x-ms-thinclient-proxy-operation-type': 'Upsert'
+    'x-ms-documentdb-is-upsert': 'True'
+    'Content-Length': '7347'
+    'User-Agent': 'azsdk-python-cosmos/4.15.0 Python/3.13.5 (Windows-11-10.0.26200-SP0)'
+A body is sent with the request"}
+{"time": "2026-03-05 19:52:57,720", "level": "INFO", "module": "azure.cosmos._cosmos_http_logging_policy", "message": "Response status: 201
+Response headers:
+    'Content-Length': '7511'
+    'Date': 'Thu, 05 Mar 2026 14:22:56 GMT'
+    'Content-Type': 'application/json'
+    'Server': 'Compute'
+    'x-ms-gatewayversion': '2.0.0'
+    'x-ms-activity-id': '46a30668-204b-4f2d-9157-389ec7a84cf5'
+    'x-ms-last-state-change-utc': 'Fri, 27 Feb 2026 12:28:07.680 GMT'
+    'etag': '"10007c77-0000-0800-0000-69a991c10000"'
+    'x-ms-resource-quota': 'documentSize=51200;documentsSize=52428800;documentsCount=-1;collectionSize=52428800;'
+    'x-ms-resource-usage': 'documentSize=0;documentsSize=280;documentsCount=27;collectionSize=287;'
+    'x-ms-schemaversion': '1.21'
+    'lsn': '33'
+    'x-ms-request-charge': '89.71'
+    'x-ms-alt-content-path': 'dbs/cloudsage/colls/incidents'
+    'x-ms-content-path': 'nPUeAKOFAME='
+    'x-ms-quorum-acked-lsn': '32'
+    'x-ms-current-write-quorum': '3'
+    'x-ms-current-replica-set-size': '4'
+    'x-ms-documentdb-partitionkeyrangeid': '0'
+    'x-ms-xp-role': '1'
+    'x-ms-global-Committed-lsn': '32'
+    'x-ms-number-of-read-regions': '0'
+    'x-ms-transport-request-id': '2'
+    'x-ms-cosmos-llsn': '33'
+    'x-ms-cosmos-quorum-acked-llsn': '32'
+    'x-ms-session-token': '0:-1#33'
+    'x-ms-request-duration-ms': '5.241'
+    'x-ms-serviceversion': 'version=2.14.0.0'
+    'x-ms-cosmos-physical-partition-id': '0'
+    'x-ms-cosmos-internal-partition-id': 'REDACTED'"}
+{"time": "2026-03-05 19:52:57,723", "level": "INFO", "module": "CosmosDBClient", "message": "Saved: id=14015a47-68e9-4f1d-ad99-4f665935aeb4 service=checkout-service"}
+{"time": "2026-03-05 19:52:57,724", "level": "INFO", "module": "CloudSage.Orchestrator", "message": "[14015a47-68e9-4f1d-ad99-4f665935aeb4] Step 10: Feedback loop"}
+{"time": "2026-03-05 19:52:57,727", "level": "INFO", "module": "azure.cosmos._cosmos_http_logging_policy", "message": "Request URL: 'https://cloudsage-cosmos-westus2.documents.azure.com:443/dbs/cloudsage/colls/incidents/docs/'
+Request method: 'POST'
+Request headers:
+    'Cache-Control': 'no-cache'
+    'x-ms-version': '2020-07-15'
+    'x-ms-documentdb-query-iscontinuationexpected': 'False'
+    'x-ms-consistency-level': 'Session'
+    'x-ms-cosmos-sdk-supportedcapabilities': '1'
+    'x-ms-activity-id': 'dab9f0c6-79ce-496d-ac92-6732721278d4'
+    'x-ms-documentdb-partitionkey': '["checkout-service"]'
+    'x-ms-date': 'Thu, 05 Mar 2026 14:22:57 GMT'
+    'authorization': 'REDACTED'
+    'Content-Type': 'application/json'
+    'Accept': 'application/json'
+    'x-ms-client-id': '13c9d9d2-24a0-4ea0-afd9-e0aaa7190c0c'
+    'x-ms-cosmos-intended-collection-rid': 'nPUeAKOFAME='
+    'x-ms-thinclient-proxy-resource-type': 'docs'
+    'x-ms-thinclient-proxy-operation-type': 'Upsert'
+    'x-ms-documentdb-is-upsert': 'True'
+    'Content-Length': '343'
+    'User-Agent': 'azsdk-python-cosmos/4.15.0 Python/3.13.5 (Windows-11-10.0.26200-SP0)'
+A body is sent with the request"}
+{"time": "2026-03-05 19:52:58,023", "level": "INFO", "module": "azure.cosmos._cosmos_http_logging_policy", "message": "Response status: 201
+Response headers:
+    'Content-Length': '548'
+    'Date': 'Thu, 05 Mar 2026 14:22:57 GMT'
+    'Content-Type': 'application/json'
+    'Server': 'Compute'
+    'x-ms-gatewayversion': '2.0.0'
+    'x-ms-activity-id': 'dab9f0c6-79ce-496d-ac92-6732721278d4'
+    'x-ms-last-state-change-utc': 'Fri, 27 Feb 2026 12:28:07.680 GMT'
+    'etag': '"10007d77-0000-0800-0000-69a991c10000"'
+    'x-ms-resource-quota': 'documentSize=51200;documentsSize=52428800;documentsCount=-1;collectionSize=52428800;'
+    'x-ms-resource-usage': 'documentSize=0;documentsSize=281;documentsCount=28;collectionSize=288;'
+    'x-ms-schemaversion': '1.21'
+    'lsn': '34'
+    'x-ms-request-charge': '9.71'
+    'x-ms-alt-content-path': 'dbs/cloudsage/colls/incidents'
+    'x-ms-content-path': 'nPUeAKOFAME='
+    'x-ms-quorum-acked-lsn': '33'
+    'x-ms-current-write-quorum': '3'
+    'x-ms-current-replica-set-size': '4'
+    'x-ms-documentdb-partitionkeyrangeid': '0'
+    'x-ms-xp-role': '1'
+    'x-ms-global-Committed-lsn': '33'
+    'x-ms-number-of-read-regions': '0'
+    'x-ms-transport-request-id': '3'
+    'x-ms-cosmos-llsn': '34'
+    'x-ms-cosmos-quorum-acked-llsn': '33'
+    'x-ms-session-token': '0:-1#34'
+    'x-ms-request-duration-ms': '3.075'
+    'x-ms-serviceversion': 'version=2.14.0.0'
+    'x-ms-cosmos-physical-partition-id': '0'
+    'x-ms-cosmos-internal-partition-id': 'REDACTED'"}
+{"time": "2026-03-05 19:52:58,025", "level": "INFO", "module": "CosmosDBClient", "message": "Saved: id=feedback-14015a47-68e9-4f1d-ad99-4f665935aeb4 service=checkout-service"}
+{"time": "2026-03-05 19:52:58,026", "level": "INFO", "module": "CloudSage.Orchestrator", "message": "Feedback: incident=14015a47-68e9-4f1d-ad99-4f665935aeb4 score=15"}
+{"time": "2026-03-05 19:52:58,027", "level": "INFO", "module": "CloudSage.SLOTracker", "message": "Recorded downtime: service=checkout-service duration=1.3803058833333333m"}
+{"time": "2026-03-05 19:52:58,028", "level": "INFO", "module": "CloudSage.Orchestrator", "message": "[14015a47-68e9-4f1d-ad99-4f665935aeb4] Step 12: Auto-generating runbook"}
+{"time": "2026-03-05 19:52:58,029", "level": "INFO", "agent": "RunbookGenerator", "message": "Calling LLM model=llama-3.3-70b-versatile agent=RunbookGenerator"}
+{"time": "2026-03-05 19:52:58,029", "level": "INFO", "module": "RunbookGenerator", "message": "Calling LLM model=llama-3.3-70b-versatile agent=RunbookGenerator"}
+{"time": "2026-03-05 19:52:59,568", "level": "INFO", "module": "httpx", "message": "HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK""}
+{"time": "2026-03-05 19:52:59,795", "level": "ERROR", "module": "CloudSage.RunbookGenerator", "message": "Failed to index runbook for 14015a47-68e9-4f1d-ad99-4f665935aeb4: Gemini batch embed HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "models/text-embedding-004 is not found for API version v1beta, or is not supported for embedContent. Call ListModels to see the list of available models and their supported methods.",
+    "status": "NOT_FOUND"
+  }
+}
+"}
+{"time": "2026-03-05 19:52:59,797", "level": "INFO", "module": "CloudSage.Orchestrator", "message": "[14015a47-68e9-4f1d-ad99-4f665935aeb4] Pipeline complete: status=success severity=P1 savings=$15423.92"}

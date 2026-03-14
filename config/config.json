@@ -1,0 +1,204 @@
+{
+  "azure": {
+    "subscription_id": "",
+    "resource_group": "",
+    "location": "eastus"
+  },
+  "llm_provider": "openai",
+  "openai": {
+    "api_key": "",
+    "primary_model": "gpt-4o",
+    "consensus_model_2": "gpt-4o-mini",
+    "fallback_model": "gpt-4o-mini",
+    "embedding_model": "text-embedding-3-small",
+    "embedding_dims": 1536
+  },
+  "providers": {
+    "openai": {
+      "api_key": "",
+      "base_url": "",
+      "primary_model": "gpt-4o",
+      "consensus_model_2": "gpt-4o-mini",
+      "fallback_model": "gpt-4o-mini",
+      "embedding_model": "text-embedding-3-small",
+      "embedding_dims": 1536,
+      "max_tokens": 1500,
+      "rate_limit_per_minute": 60
+    },
+    "gemini": {
+      "_note": "Switch to Gemini free tier: set llm_provider=gemini or GEMINI_API_KEY env var",
+      "api_key": "",
+      "base_url": "https://generativelanguage.googleapis.com/v1beta/openai/",
+      "primary_model": "gemini-2.0-flash",
+      "consensus_model_2": "gemini-2.0-flash-lite",
+      "fallback_model": "gemini-2.0-flash-lite",
+      "embedding_model": "text-embedding-004",
+      "embedding_dims": 768,
+      "max_tokens": 1500,
+      "rate_limit_per_minute": 12
+    },
+    "groq": {
+      "_note": "Groq free tier: 30 RPM, 14400 req/day. Much more generous than Gemini.",
+      "api_key": "",
+      "base_url": "https://api.groq.com/openai/v1",
+      "primary_model": "llama-3.3-70b-versatile",
+      "consensus_model_2": "openai/gpt-oss-20b",
+      "fallback_model": "llama-3.1-8b-instant",
+      "max_tokens": 1500,
+      "_note_embeddings": "Groq has no embedding API. Embeddings use a separate provider below.",
+      "embedding_provider": "gemini",
+      "embedding_key": "",
+      "embedding_base_url": "https://generativelanguage.googleapis.com/v1beta/openai/",
+      "embedding_model": "text-embedding-004",
+      "embedding_dims": 768,
+      "rate_limit_per_minute": 25
+    }
+  },
+  "faiss": {
+    "index_dir": "data/faiss_index",
+    "_note_blob": "Blob backing disabled on free tier \u2014 AZURE_STORAGE_CONNECTION_STRING not required",
+    "blob_connection_string": "",
+    "blob_container": "cloudsage-faiss"
+  },
+  "cosmos_db": {
+    "endpoint": "",
+    "key": "",
+    "database": "cloudsage",
+    "container": "incidents",
+    "partition_key": "/service"
+  },
+  "_comment_paid_services": "Event Hub, Service Bus, AKS, Blob, Log Analytics require a paid Azure subscription. They are replaced by HTTP ingestion, direct routing, and automation stubs on the free tier.",
+  "teams": {
+    "webhook_url": "${TEAMS_WEBHOOK_URL}"
+  },
+  "agents": {
+    "rate_limit_per_minute": 10,
+    "max_concurrent_agents": 5,
+    "timeout_seconds": 60,
+    "global_rate_limit_per_minute": 25,
+    "consensus_stagger_seconds": 2.0,
+    "_comment_rate_limits": "Gemini free-tier hard limit = 15 RPM. global_rate_limit_per_minute=12 gives 20% headroom. consensus_stagger_seconds spaces out multi-model calls so 3 consensus votes do not fire simultaneously.",
+    "_note_rate_limit": "Overridden at runtime: Groq=25 RPM, Gemini=12 RPM, OpenAI=60 RPM"
+  },
+  "anomaly_detection": {
+    "contamination": 0.05,
+    "lookback_window_minutes": 30
+  },
+  "thresholds": {
+    "cpu_critical": 90,
+    "cpu_warning": 75,
+    "memory_critical": 85,
+    "memory_warning": 70,
+    "error_rate_critical": 5.0,
+    "error_rate_warning": 2.0,
+    "cost_spike_percent": 20
+  },
+  "logging": {
+    "level": "INFO",
+    "structured": true,
+    "log_file": "logs/cloudsage.log"
+  },
+  "services": {
+    "payment-api": {
+      "dependencies": [
+        "postgres",
+        "redis",
+        "auth-service",
+        "fraud-service"
+      ]
+    },
+    "checkout-service": {
+      "dependencies": [
+        "payment-api",
+        "inventory-api",
+        "cart-service"
+      ]
+    },
+    "inventory-api": {
+      "dependencies": [
+        "postgres",
+        "redis"
+      ]
+    },
+    "auth-service": {
+      "dependencies": [
+        "postgres",
+        "redis"
+      ]
+    },
+    "cart-service": {
+      "dependencies": [
+        "redis"
+      ]
+    },
+    "fraud-service": {
+      "dependencies": [
+        "postgres",
+        "ml-scoring-api"
+      ]
+    },
+    "ml-scoring-api": {
+      "dependencies": [
+        "redis"
+      ]
+    },
+    "notification-service": {
+      "dependencies": [
+        "queue-service"
+      ]
+    },
+    "queue-service": {
+      "dependencies": []
+    }
+  },
+  "slo_definitions": {
+    "payment-api": {
+      "slo_target_pct": 99.95,
+      "window_days": 30,
+      "fast_burn_threshold": 14.4,
+      "slow_burn_threshold": 6.0
+    },
+    "checkout-service": {
+      "slo_target_pct": 99.9,
+      "window_days": 30
+    },
+    "inventory-api": {
+      "slo_target_pct": 99.5,
+      "window_days": 30
+    },
+    "auth-service": {
+      "slo_target_pct": 99.99,
+      "window_days": 30
+    },
+    "default": {
+      "slo_target_pct": 99.9,
+      "window_days": 30
+    }
+  },
+  "revenue_models": {
+    "payment-api": {
+      "avg_transactions_per_minute": 1200,
+      "avg_order_value_usd": 85,
+      "error_impact_factor": 0.75,
+      "infrastructure_cost_per_minute_usd": 12.0
+    },
+    "checkout-service": {
+      "avg_transactions_per_minute": 800,
+      "avg_order_value_usd": 85,
+      "error_impact_factor": 0.65,
+      "infrastructure_cost_per_minute_usd": 8.0
+    },
+    "auth-service": {
+      "avg_transactions_per_minute": 3000,
+      "avg_order_value_usd": 0,
+      "error_impact_factor": 0.9,
+      "infrastructure_cost_per_minute_usd": 5.0
+    },
+    "default": {
+      "avg_transactions_per_minute": 100,
+      "avg_order_value_usd": 50,
+      "error_impact_factor": 0.6,
+      "infrastructure_cost_per_minute_usd": 2.5
+    }
+  }
+}

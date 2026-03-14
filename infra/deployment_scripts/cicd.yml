@@ -1,0 +1,213 @@
+name: CloudSage CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+env:
+  PYTHON_VERSION: "3.11"
+  NODE_VERSION: "20"
+  AZURE_FUNCTIONAPP_NAME: cloudsage-func
+
+jobs:
+  # ──────────────────────────────────────────────────────────────────────────
+  # Job 1: Python Tests
+  # ──────────────────────────────────────────────────────────────────────────
+  test:
+    name: Python Tests & Coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests with coverage
+        run: |
+          pytest tests/ -v \
+            --cov=agents \
+            --cov=decision_engine \
+            --cov=analytics \
+            --cov=rag \
+            --cov=database \
+            --cov=automation \
+            --cov=config \
+            --cov=streaming \
+            --cov-report=xml \
+            --cov-report=term-missing
+        env:
+          # Mock values — all Azure SDK and OpenAI calls are mocked in tests
+          OPENAI_API_KEY: "sk-test-mock-key-not-real"
+          COSMOS_DB_ENDPOINT: "https://mock.cosmos.azure.com"
+          COSMOS_DB_KEY: "mock-key"
+          EVENT_HUB_CONNECTION_STRING: "Endpoint=sb://mock/;SharedAccessKeyName=mock;SharedAccessKey=bW9jaw=="
+          SERVICE_BUS_CONNECTION_STRING: "Endpoint=sb://mock/;SharedAccessKeyName=mock;SharedAccessKey=bW9jaw=="
+          TEAMS_WEBHOOK_URL: "https://mock.webhook.office.com"
+          AKS_CLUSTER_NAME: "mock-aks"
+          AKS_RESOURCE_GROUP: "mock-rg"
+          AZURE_SUBSCRIPTION_ID: "00000000-0000-0000-0000-000000000000"
+          AZURE_RESOURCE_GROUP: "mock-rg"
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./coverage.xml
+          fail_ci_if_error: false
+
+  # ──────────────────────────────────────────────────────────────────────────
+  # Job 2: Lint (Python + Dashboard)
+  # FIXED: flake8 now covers all Python packages (previously missed rag/,
+  # database/, automation/, config/)
+  # ──────────────────────────────────────────────────────────────────────────
+  lint:
+    name: Lint & Format Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install lint tools
+        run: pip install flake8 black
+
+      - name: Black format check
+        run: black --check --diff .
+
+      # FIXED: covers all Python source packages, not just a subset
+      - name: Flake8 — all packages
+        run: |
+          flake8 \
+            agents/ \
+            decision_engine/ \
+            analytics/ \
+            streaming/ \
+            rag/ \
+            database/ \
+            automation/ \
+            config/ \
+            --max-line-length=120 \
+            --extend-ignore=E203,W503
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      # FIXED: npm ci now works because dashboard/package.json exists
+      - name: Install dashboard deps
+        run: npm ci
+        working-directory: dashboard
+
+      - name: Next.js lint
+        run: npm run lint
+        working-directory: dashboard
+
+  # ──────────────────────────────────────────────────────────────────────────
+  # Job 3: Deploy Infrastructure (main branch only)
+  # ──────────────────────────────────────────────────────────────────────────
+  deploy-infra:
+    name: Deploy Azure Infrastructure
+    runs-on: ubuntu-latest
+    needs: [test, lint]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    environment: production
+    outputs:
+      function_app_name: ${{ steps.bicep.outputs.functionAppUrl }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy Bicep
+        id: bicep
+        uses: azure/arm-deploy@v1
+        with:
+          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          resourceGroupName: ${{ secrets.AZURE_RESOURCE_GROUP }}
+          template: ./infra/bicep/main.bicep
+          parameters: >
+            environment=production
+            repositoryUrl=https://github.com/${{ github.repository }}
+          failOnStdErr: false
+
+  # ──────────────────────────────────────────────────────────────────────────
+  # Job 4: Deploy Azure Functions
+  # ──────────────────────────────────────────────────────────────────────────
+  deploy-functions:
+    name: Deploy Azure Functions
+    runs-on: ubuntu-latest
+    needs: deploy-infra
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install function dependencies
+        run: |
+          pip install -r functions/requirements.txt \
+            --target functions/.python_packages/lib/site-packages
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy to Azure Functions
+        uses: Azure/functions-action@v1
+        with:
+          app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
+          package: .
+          scm-do-build-during-deployment: true
+          enable-oryx-build: true
+
+  # ──────────────────────────────────────────────────────────────────────────
+  # Job 5: Deploy Dashboard
+  # FIXED: now correctly depends on deploy-infra (parallel with functions),
+  # uses npm ci (works because package.json now exists)
+  # ──────────────────────────────────────────────────────────────────────────
+  deploy-dashboard:
+    name: Deploy Dashboard to Azure Static Web Apps
+    runs-on: ubuntu-latest
+    needs: deploy-infra
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: dashboard/package-lock.json
+
+      - name: Install dashboard dependencies
+        run: npm ci
+        working-directory: dashboard
+
+      - name: Build dashboard
+        run: npm run build
+        working-directory: dashboard
+        env:
+          NEXT_PUBLIC_API_URL: ${{ secrets.API_URL }}
+
+      - name: Deploy to Azure Static Web Apps
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: upload
+          app_location: /dashboard
+          output_location: out
